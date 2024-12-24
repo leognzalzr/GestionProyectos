@@ -1,4 +1,4 @@
-package modelo;
+package modelos;
 
 import jakarta.persistence.*;
 import java.util.Date;

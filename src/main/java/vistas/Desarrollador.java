@@ -1,6 +1,6 @@
 package vistas;
 
-import modelo.Equipo;
+import modelos.Equipo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -50,8 +50,8 @@ public class Desarrollador {
 
     private void cargarDesarrollador() {
         try (Session session = factory.openSession()) {
-            List<modelo.Desarrollador> desarrolladores = session.createQuery("from modelo.Desarrollador", modelo.Desarrollador.class).list();
-            for (modelo.Desarrollador desarrollador : desarrolladores) {
+            List<modelos.Desarrollador> desarrolladores = session.createQuery("from modelos.Desarrollador", modelos.Desarrollador.class).list();
+            for (modelos.Desarrollador desarrollador : desarrolladores) {
                 tableModel.addRow(new Object[]{
                         desarrollador.getId(),
                         desarrollador.getNombre(),
@@ -66,7 +66,7 @@ public class Desarrollador {
 
     private void cargarEquipos() {
         try (Session session = factory.openSession()) {
-            List<Equipo> equipos = session.createQuery("from modelo.Equipo", Equipo.class).list();
+            List<Equipo> equipos = session.createQuery("from modelos.Equipo", Equipo.class).list();
             for (Equipo equipo : equipos) {
                 cbEquipo.addItem(new ItemsComboBox(equipo.getId(), equipo.getNombre()));
             }
@@ -119,9 +119,9 @@ public class Desarrollador {
 
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            modelo.Desarrollador desarrollador;
+            modelos.Desarrollador desarrollador;
             if (selectedDevelopmentId == null) {
-                desarrollador = new modelo.Desarrollador();
+                desarrollador = new modelos.Desarrollador();
                 desarrollador.setNombre(nombre);
                 desarrollador.setEspecialidad(especialidad);
                 desarrollador.setExperiencia(experiencia);
@@ -129,7 +129,7 @@ public class Desarrollador {
                 session.persist(desarrollador);
                 tableModel.addRow(new Object[]{desarrollador.getId(), desarrollador.getNombre(), desarrollador.getExperiencia(), desarrollador.getEspecialidad(), desarrollador.getEquipo().getNombre(), desarrollador.getEquipo().getId()});
             } else {
-                desarrollador = session.get(modelo.Desarrollador.class, selectedDevelopmentId);
+                desarrollador = session.get(modelos.Desarrollador.class, selectedDevelopmentId);
                 desarrollador.setNombre(nombre);
                 desarrollador.setEspecialidad(especialidad);
                 desarrollador.setExperiencia(experiencia);
@@ -162,7 +162,7 @@ public class Desarrollador {
 
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            modelo.Desarrollador desarrollador = session.get(modelo.Desarrollador.class, selectedDevelopmentId);
+            modelos.Desarrollador desarrollador = session.get(modelos.Desarrollador.class, selectedDevelopmentId);
             if (desarrollador != null) {
                 session.remove(desarrollador);
                 session.getTransaction().commit();

@@ -45,8 +45,8 @@ public class Equipo {
 
     private void cargarEquipos() {
         try (Session session = factory.openSession()) {
-            List<modelo.Equipo> equipos = session.createQuery("from modelo.Equipo", modelo.Equipo.class).list();
-            for (modelo.Equipo equipo : equipos) {
+            List<modelos.Equipo> equipos = session.createQuery("from modelos.Equipo", modelos.Equipo.class).list();
+            for (modelos.Equipo equipo : equipos) {
                 tableModel.addRow(new Object[]{equipo.getId(), equipo.getNombre()});
             }
         }
@@ -55,7 +55,7 @@ public class Equipo {
     private void seleccionarEquipo() {
         int selectedRow = tablaEquipo.getSelectedRow();
         if (selectedRow != -1) {
-            selectedTeamId = (int) tableModel.getValueAt(selectedRow, 0);
+            selectedTeamId = (Integer) tableModel.getValueAt(selectedRow, 0);
             txtNombre.setText((String) tableModel.getValueAt(selectedRow, 1));
         }
     }
@@ -70,14 +70,14 @@ public class Equipo {
 
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            modelo.Equipo equipo;
+            modelos.Equipo equipo;
             if (selectedTeamId == null) {
-                equipo = new modelo.Equipo();
+                equipo = new modelos.Equipo();
                 equipo.setNombre(nombreEquipo);
                 session.persist(equipo);
                 tableModel.addRow(new Object[]{equipo.getId(), equipo.getNombre()});
             } else {
-                equipo = session.get(modelo.Equipo.class, selectedTeamId);
+                equipo = session.get(modelos.Equipo.class, selectedTeamId);
                 equipo.setNombre(nombreEquipo);
                 session.merge(equipo);
                 int selectedRow = tablaEquipo.getSelectedRow();
@@ -103,14 +103,18 @@ public class Equipo {
 
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            modelo.Equipo equipo = session.get(modelo.Equipo.class, selectedTeamId);
+            modelos.Equipo equipo = session.get(modelos.Equipo.class, selectedTeamId);
             if (equipo != null) {
                 session.remove(equipo);
                 session.getTransaction().commit();
                 tableModel.removeRow(selectedRow);
+                limpiarCampos();
+                JOptionPane.showMessageDialog(null, "Equipo eliminado con éxito.");
             }
-            limpiarCampos();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el equipo", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
     private void limpiarCampos() {
