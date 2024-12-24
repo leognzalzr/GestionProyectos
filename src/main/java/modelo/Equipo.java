@@ -1,4 +1,4 @@
-package org.gestion.proyectos.modelo;
+package modelo;
 
 import jakarta.persistence.*;
 

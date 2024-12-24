@@ -1,5 +1,5 @@
 
-package org.gestion.proyectos.modelo;
+package modelo;
 
 import jakarta.persistence.*;
 
@@ -18,8 +18,7 @@ public class Desarrollador extends Persona {
     super();
   }
 
-  public Desarrollador(String especialidad, String nombre, int experiencia,
-      Equipo equipo) {
+  public Desarrollador(String especialidad, String nombre, int experiencia, Equipo equipo) {
     super(nombre);
     this.experiencia = experiencia;
     this.especialidad = especialidad;
