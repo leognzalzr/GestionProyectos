@@ -17,7 +17,7 @@
         </constraints>
         <properties>
           <font size="24" style="1"/>
-          <text value="ABM de Desarrollador"/>
+          <text value="ABM Desarrollador"/>
         </properties>
       </component>
       <component id="435f3" class="javax.swing.JLabel">
