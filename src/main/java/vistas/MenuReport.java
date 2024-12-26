@@ -28,13 +28,13 @@ public class MenuReport {
         CLIENTESButton.setPreferredSize(buttonSize);
 
 
-        CLIENTESButton.addActionListener(_ -> createAndShowFrame("Reporte de Clientes", new Cliente(factory).getPanel()));
-        EQUIPOSButton.addActionListener(_ -> createAndShowFrame("Reporte de Equipos", new Equipo(factory).getPanel()));
+        CLIENTESButton.addActionListener(_ -> createAndShowFrame("Reporte de Clientes", new ClienteReport(factory).getPanel()));
+        EQUIPOSButton.addActionListener(_ -> createAndShowFrame("Reporte de Equipos", new EquipoReport(factory).getPanel()));
 
-        DESARROLLADORESButton.addActionListener(_ -> createAndShowFrame("Reporte de Desarrolladores", new Desarrollador(factory).getPanel()));
-        TAREASButton.addActionListener(_ -> createAndShowFrame("Reporte de Tareas", new Tarea(factory).getPanel()));
+        DESARROLLADORESButton.addActionListener(_ -> createAndShowFrame("Reporte de Desarrolladores", new DesarrolladorReport(factory).getPanel()));
+        TAREASButton.addActionListener(_ -> createAndShowFrame("Reporte de Tareas", new TareaReport(factory).getPanel()));
 
-        PROYECTOSButton.addActionListener(_ -> createAndShowFrame("Reporte de Proyectos", new Proyecto(factory).getPanel()));
+        PROYECTOSButton.addActionListener(_ -> createAndShowFrame("Reporte de Proyectos", new ProyectoReport(factory).getPanel()));
     }
 
     private void createAndShowFrame(String title, JPanel panel) {

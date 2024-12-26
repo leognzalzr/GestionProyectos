@@ -19,7 +19,7 @@ public class Main {
 
       FlatMacDarkLaf.setup();
       JFrame frame = new JFrame("Gestión de Proyectos");
-      frame.setContentPane(new vistas.MenuReport(factory).getPanel());
+      frame.setContentPane(new vistas.MenuPrincipal(factory).getPanel());
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();
       frame.setLocationRelativeTo(null);

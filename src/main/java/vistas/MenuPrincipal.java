@@ -21,7 +21,7 @@ public class MenuPrincipal {
 
         btnABM.addActionListener(_ -> createAndShowFrame("Menú de Alta, Baja y Modificación (ABM)", new MenuABM(factory).getPanel()));
 
-        btnReportes.addActionListener(_ -> createAndShowFrame("Menú de Reportes", new Desarrollador(factory).getPanel()));
+        btnReportes.addActionListener(_ -> createAndShowFrame("Menú de Reportes", new MenuReport(factory).getPanel()));
     }
 
     private void createAndShowFrame(String title, JPanel panel) {
