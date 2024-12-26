@@ -1,3 +1,4 @@
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import modelos.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -16,8 +17,9 @@ public class Main {
       .addAnnotatedClass(Tarea.class)
       .buildSessionFactory();
 
+      FlatMacDarkLaf.setup();
       JFrame frame = new JFrame("Gestión de Proyectos");
-      frame.setContentPane(new vistas.ProyectoReport(factory).getPanel());
+      frame.setContentPane(new vistas.MenuPrincipal(factory).getPanel());
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();
       frame.setLocationRelativeTo(null);
