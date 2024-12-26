@@ -25,6 +25,8 @@ public class DesarrolladorReport {
         tablaReportDesarrollador.setModel(tableModel);
 
         cargarDesarrolladores();
+
+
     }
 
     private void cargarDesarrolladores() {

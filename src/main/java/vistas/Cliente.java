@@ -28,7 +28,7 @@ public class Cliente {
             throw new IllegalArgumentException("SessionFactory cannot be null");
         }
 
-
+        PanelCliente = new JPanel();
         tableModel = new DefaultTableModel(new Object[]{"ID", "Nombre Institución", "Dirección", "Teléfono"}, 0);
         tablaCliente.setModel(tableModel);
 
