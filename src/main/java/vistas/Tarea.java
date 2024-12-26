@@ -27,7 +27,7 @@ public class Tarea {
             throw new IllegalArgumentException("SessionFactory cannot be null");
         }
 
-        tableModel = new DefaultTableModel(new Object[]{"ID", "Descripción", "Estado", "Desarrollador"}, 0);
+        tableModel = new DefaultTableModel(new Object[]{"ID", "Descripción", "Estado", "ID Desarrollador", "Desarrollador"}, 0);
         tablaTarea.setModel(tableModel);
 
         cargarTareas();
@@ -65,7 +65,8 @@ public class Tarea {
                         tarea.getId(),
                         tarea.getDescripcion(),
                         tarea.getEstado(),
-                        tarea.getDesarrollador().getId()
+                        tarea.getDesarrollador().getId(),
+                        tarea.getDesarrollador().getNombre()
                 });
             }
         } catch (Exception e) {

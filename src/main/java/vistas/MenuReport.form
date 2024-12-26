@@ -12,50 +12,56 @@
     <children>
       <component id="8a11a" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="REPORTES"/>
+          <font size="24" style="1"/>
+          <text value="Menú de Reportes"/>
         </properties>
       </component>
-      <component id="7e50d" class="javax.swing.JButton" binding="TAREASButton" default-binding="true">
+      <component id="70749" class="javax.swing.JButton" binding="btnProyecto">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="TAREAS"/>
+          <font size="16"/>
+          <text value="Proyecto"/>
         </properties>
       </component>
-      <component id="70749" class="javax.swing.JButton" binding="PROYECTOSButton" default-binding="true">
+      <component id="3f3e9" class="javax.swing.JButton" binding="btnDesarrollador">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="PROYECTOS"/>
+          <font size="16"/>
+          <text value="Desarrollador"/>
         </properties>
       </component>
-      <component id="7965d" class="javax.swing.JButton" binding="EQUIPOSButton" default-binding="true">
+      <component id="9c8af" class="javax.swing.JButton" binding="btnCliente">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="1" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="EQUIPOS"/>
+          <font size="16"/>
+          <text value="Cliente"/>
         </properties>
       </component>
-      <component id="3f3e9" class="javax.swing.JButton" binding="DESARROLLADORESButton" default-binding="true">
+      <component id="7965d" class="javax.swing.JButton" binding="btnEquipo">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="DESARROLLADORES"/>
+          <font size="16"/>
+          <text value="Equipo"/>
         </properties>
       </component>
-      <component id="9c8af" class="javax.swing.JButton" binding="CLIENTESButton" default-binding="true">
+      <component id="7e50d" class="javax.swing.JButton" binding="btnTarea">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="CLIENTES"/>
+          <font size="16"/>
+          <text value="Tarea"/>
         </properties>
       </component>
     </children>

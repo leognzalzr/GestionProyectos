@@ -9,32 +9,27 @@ import java.util.Map;
 
 public class MenuReport {
     private JPanel PanelMenuReport;
-    private JButton TAREASButton;
-    private JButton PROYECTOSButton;
-    private JButton EQUIPOSButton;
-    private JButton DESARROLLADORESButton;
-    private JButton CLIENTESButton;
+    private JButton btnTarea;
+    private JButton btnProyecto;
+    private JButton btnEquipo;
+    private JButton btnDesarrollador;
+    private JButton btnCliente;
 
     private final Map<String, JFrame> openFrames = new HashMap<>();
 
     public MenuReport(SessionFactory factory) {
-
-
         Dimension buttonSize = new Dimension(250, 50);
-        TAREASButton.setPreferredSize(buttonSize);
-        PROYECTOSButton.setPreferredSize(buttonSize);
-        EQUIPOSButton.setPreferredSize(buttonSize);
-        DESARROLLADORESButton.setPreferredSize(buttonSize);
-        CLIENTESButton.setPreferredSize(buttonSize);
+        btnCliente.setPreferredSize(buttonSize);
+        btnEquipo.setPreferredSize(buttonSize);
+        btnDesarrollador.setPreferredSize(buttonSize);
+        btnTarea.setPreferredSize(buttonSize);
+        btnProyecto.setPreferredSize(buttonSize);
 
-
-        CLIENTESButton.addActionListener(_ -> createAndShowFrame("Reporte de Clientes", new ClienteReport(factory).getPanel()));
-        EQUIPOSButton.addActionListener(_ -> createAndShowFrame("Reporte de Equipos", new EquipoReport(factory).getPanel()));
-
-        DESARROLLADORESButton.addActionListener(_ -> createAndShowFrame("Reporte de Desarrolladores", new DesarrolladorReport(factory).getPanel()));
-        TAREASButton.addActionListener(_ -> createAndShowFrame("Reporte de Tareas", new TareaReport(factory).getPanel()));
-
-        PROYECTOSButton.addActionListener(_ -> createAndShowFrame("Reporte de Proyectos", new ProyectoReport(factory).getPanel()));
+        btnCliente.addActionListener(_ -> createAndShowFrame("Reporte de Clientes", new ClienteReport(factory).getPanel()));
+        btnEquipo.addActionListener(_ -> createAndShowFrame("Reporte de Equipos", new EquipoReport(factory).getPanel()));
+        btnDesarrollador.addActionListener(_ -> createAndShowFrame("Reporte de Desarrolladores", new DesarrolladorReport(factory).getPanel()));
+        btnTarea.addActionListener(_ -> createAndShowFrame("Reporte de Tareas", new TareaReport(factory).getPanel()));
+        btnProyecto.addActionListener(_ -> createAndShowFrame("Reporte de Proyectos", new ProyectoReport(factory).getPanel()));
     }
 
     private void createAndShowFrame(String title, JPanel panel) {

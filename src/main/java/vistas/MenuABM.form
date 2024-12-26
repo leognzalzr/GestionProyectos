@@ -16,7 +16,7 @@
         </constraints>
         <properties>
           <font size="24" style="1"/>
-          <text value="Menú ABM"/>
+          <text value="Menú de ABM"/>
         </properties>
       </component>
       <component id="50de9" class="javax.swing.JButton" binding="btnCliente">
