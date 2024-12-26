@@ -28,14 +28,13 @@ public class Cliente {
             throw new IllegalArgumentException("SessionFactory cannot be null");
         }
 
-        // Configurar el modelo de la tabla
+
         tableModel = new DefaultTableModel(new Object[]{"ID", "Nombre Institución", "Dirección", "Teléfono"}, 0);
         tablaCliente.setModel(tableModel);
 
-        // Cargar clientes al inicio
+
         cargarClientes();
 
-        // Listeners
         tablaCliente.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

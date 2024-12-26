@@ -4,7 +4,6 @@ import org.hibernate.cfg.Configuration;
 
 import javax.swing.*;
 import java.util.*;
-
 public class Main {
   public static void main(String[] args) {
       SessionFactory factory = new Configuration()
@@ -18,11 +17,11 @@ public class Main {
       .buildSessionFactory();
 
       JFrame frame = new JFrame("Gestión Proyectos");
-      frame.setContentPane(new vistas.Equipo(factory).getPanel());
+      frame.setContentPane(new vistas.Tarea(factory).getPanel());
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();
       frame.setLocationRelativeTo(null);
       frame.setVisible(true);
-      // uwu
+
   }
 }
