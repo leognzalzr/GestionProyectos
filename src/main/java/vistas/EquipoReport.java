@@ -43,5 +43,4 @@ public class EquipoReport {
     public JPanel getPanel() {
         return panelReporteEquipo;
     }
-
 }

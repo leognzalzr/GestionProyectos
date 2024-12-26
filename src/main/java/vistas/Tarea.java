@@ -1,6 +1,5 @@
 package vistas;
-import modelos.Desarrollador;
-import modelos.Equipo;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import javax.swing.*;
@@ -66,7 +65,7 @@ public class Tarea {
                         tarea.getId(),
                         tarea.getDescripcion(),
                         tarea.getEstado(),
-                        tarea.getDesarrollador().getId()  // Changed to show ID instead of toString()
+                        tarea.getDesarrollador().getId()
                 });
             }
         } catch (Exception e) {

@@ -11,7 +11,6 @@ import java.util.List;
 public class ClienteReport {
     private JPanel panelReporteCliente;
     private JTable tablaReporteCliente;
-    private JLabel lblTitulo;
     private final DefaultTableModel tableModel;
     private final SessionFactory factory;
 
@@ -46,9 +45,5 @@ public class ClienteReport {
 
     public JPanel getPanel() {
         return panelReporteCliente;
-    }
-
-    public void actualizarTabla() {
-        cargarClientes();
     }
 }

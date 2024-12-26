@@ -3,7 +3,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import javax.swing.*;
-import java.util.*;
+
 public class Main {
   public static void main(String[] args) {
       SessionFactory factory = new Configuration()
@@ -16,12 +16,11 @@ public class Main {
       .addAnnotatedClass(Tarea.class)
       .buildSessionFactory();
 
-      JFrame frame = new JFrame("Gestión Proyectos");
-      frame.setContentPane(new vistas.Tarea(factory).getPanel());
+      JFrame frame = new JFrame("Gestión de Proyectos");
+      frame.setContentPane(new vistas.ProyectoReport(factory).getPanel());
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.pack();
       frame.setLocationRelativeTo(null);
       frame.setVisible(true);
-
   }
 }

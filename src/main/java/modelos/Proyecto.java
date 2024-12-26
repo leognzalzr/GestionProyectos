@@ -25,14 +25,6 @@ public class Proyecto {
   @ManyToOne
   private Cliente cliente;
 
-  public Cliente getCliente() {
-    return cliente;
-  }
-
-  public void setCliente(Cliente cliente) {
-    this.cliente = cliente;
-  }
-
   public Proyecto() {
   }
 
@@ -81,5 +73,13 @@ public class Proyecto {
 
   public void setEquipo(Equipo equipo) {
     this.equipo = equipo;
+  }
+
+  public Cliente getCliente() {
+    return cliente;
+  }
+
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 }

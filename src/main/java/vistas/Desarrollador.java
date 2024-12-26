@@ -64,7 +64,7 @@ public class Desarrollador {
 
     private void cargarEquipos() {
         try (Session session = factory.openSession()) {
-            List<Equipo> equipos = session.createQuery("from modelos.Equipo", Equipo.class).list();
+            List<Equipo> equipos = session.createQuery("from modelos.Equipo", modelos.Equipo.class).list();
             for (Equipo equipo : equipos) {
                 cbEquipo.addItem(new ItemsComboBox(equipo.getId(), equipo.getNombre()));
             }
@@ -125,7 +125,9 @@ public class Desarrollador {
                 desarrollador.setExperiencia(experiencia);
                 desarrollador.setEquipo(equipo);
                 session.persist(desarrollador);
-                tableModel.addRow(new Object[]{desarrollador.getId(), desarrollador.getNombre(), desarrollador.getExperiencia(), desarrollador.getEspecialidad(), desarrollador.getEquipo().getNombre(), desarrollador.getEquipo().getId()});
+                tableModel.addRow(new Object[]{desarrollador.getId(), desarrollador.getNombre(),
+                        desarrollador.getExperiencia(), desarrollador.getEspecialidad(),
+                        desarrollador.getEquipo().getNombre(), desarrollador.getEquipo().getId()});
             } else {
                 desarrollador = session.get(modelos.Desarrollador.class, selectedDevelopmentId);
                 desarrollador.setNombre(nombre);

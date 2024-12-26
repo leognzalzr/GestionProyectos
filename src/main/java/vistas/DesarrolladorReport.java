@@ -1,6 +1,6 @@
 package vistas;
 
-import modelos.Desarrollador; // Importa la clase Desarrollador
+import modelos.Desarrollador;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -11,7 +11,6 @@ import java.util.List;
 public class DesarrolladorReport {
     private JPanel panelReporteDesarrollador;
     private JTable tablaReportDesarrollador;
-    private JLabel lblTitulo;
     private DefaultTableModel tableModel;
     private final SessionFactory factory;
 
@@ -26,21 +25,19 @@ public class DesarrolladorReport {
         tablaReportDesarrollador.setModel(tableModel);
 
         cargarDesarrolladores();
-
-
     }
 
     private void cargarDesarrolladores() {
         try (Session session = factory.openSession()) {
-            List<Desarrollador> desarrolladores = session.createQuery("from modelos.Desarrollador", Desarrollador.class).list(); // Consulta correcta
+            List<Desarrollador> desarrolladores = session.createQuery("from modelos.Desarrollador", Desarrollador.class).list();
             tableModel.setRowCount(0);
             for (Desarrollador desarrollador : desarrolladores) {
                 tableModel.addRow(new Object[]{
-                        desarrollador.getId(), // Asumiendo que Desarrollador hereda 'id' de Persona
-                        desarrollador.getNombre(), // Asumiendo que Desarrollador hereda 'nombre' de Persona
+                        desarrollador.getId(),
+                        desarrollador.getNombre(),
                         desarrollador.getExperiencia(),
                         desarrollador.getEspecialidad(),
-                        desarrollador.getEquipo() != null ? desarrollador.getEquipo().getNombre() : "Sin equipo" // Manejo de equipos nulos
+                        desarrollador.getEquipo().getNombre(),
                 });
             }
         } catch (Exception e) {
@@ -50,9 +47,5 @@ public class DesarrolladorReport {
 
     public JPanel getPanel() {
         return panelReporteDesarrollador;
-    }
-
-    public void actualizarTabla() {
-        cargarDesarrolladores();
     }
 }

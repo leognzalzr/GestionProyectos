@@ -1,6 +1,5 @@
 package vistas;
 
-import modelos.Desarrollador;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -11,10 +10,8 @@ import java.util.List;
 public class TareaReport {
     private final DefaultTableModel tableModel;
     private JPanel PanelTareas;
-    private JTable TablaTareas;
+    private JTable tablaTareas;
     private final SessionFactory factory;
-
-
 
     public TareaReport(SessionFactory factory) {
         this.factory = factory;
@@ -23,8 +20,8 @@ public class TareaReport {
         }
 
 
-        tableModel = new DefaultTableModel(new Object[]{"ID", "Descripcion", "Estado", "Desarrollador"}, 0);
-        TablaTareas.setModel(tableModel);
+        tableModel = new DefaultTableModel(new Object[]{"ID", "Descripción", "Estado", "Desarrollador"}, 0);
+        tablaTareas.setModel(tableModel);
 
         cargarTareas();
 
@@ -50,5 +47,4 @@ public class TareaReport {
     public JPanel getPanel() {
         return PanelTareas;
     }
-
 }
