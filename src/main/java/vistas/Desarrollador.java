@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 
 public class Desarrollador {
+    private JPanel PanelDesarrollador;
     private JTextField txtNombre;
     private JTextField txtExperiencia;
     private JTextField txtEspecialidad;
@@ -19,11 +20,8 @@ public class Desarrollador {
     private JButton btnCancelar;
     private JButton btnGuardar;
     private JButton btnEliminar;
-    private JPanel PanelDesarrollador;
-
     private final DefaultTableModel tableModel;
     private Integer selectedDevelopmentId;
-
     private final SessionFactory factory;
 
     public Desarrollador(SessionFactory factory) {
