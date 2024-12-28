@@ -8,9 +8,10 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 public class TareaReport {
-    private final DefaultTableModel tableModel;
     private JPanel PanelTareas;
     private JTable tablaTareas;
+
+    private final DefaultTableModel tableModel;
     private final SessionFactory factory;
 
     public TareaReport(SessionFactory factory) {

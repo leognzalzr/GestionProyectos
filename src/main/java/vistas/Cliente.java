@@ -18,8 +18,10 @@ public class Cliente {
     private JButton btnCancelar;
     private JButton btnEliminar;
     private JTable tablaCliente;
+
     private final DefaultTableModel tableModel;
     private Integer selectedClienteId;
+
     private final SessionFactory factory;
 
     public Cliente(SessionFactory factory) {

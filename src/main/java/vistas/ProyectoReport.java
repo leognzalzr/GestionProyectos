@@ -13,6 +13,7 @@ public class ProyectoReport {
     private JPanel PanelProyecto;
 
     private final DefaultTableModel tableModel;
+
     private final SessionFactory factory;
 
     public ProyectoReport(SessionFactory factory) {

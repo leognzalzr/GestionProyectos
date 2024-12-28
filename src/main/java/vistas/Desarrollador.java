@@ -20,8 +20,10 @@ public class Desarrollador {
     private JButton btnCancelar;
     private JButton btnGuardar;
     private JButton btnEliminar;
+
     private final DefaultTableModel tableModel;
-    private Integer selectedDevelopmentId;
+    private Integer selectedDeveloperId;
+
     private final SessionFactory factory;
 
     public Desarrollador(SessionFactory factory) {
@@ -74,7 +76,7 @@ public class Desarrollador {
     private void seleccionarDesarrollador() {
         int selectedRow = tablaDesarrollador.getSelectedRow();
         if (selectedRow != -1) {
-            selectedDevelopmentId = (Integer) tableModel.getValueAt(selectedRow, 0);
+            selectedDeveloperId = (Integer) tableModel.getValueAt(selectedRow, 0);
             txtNombre.setText((String) tableModel.getValueAt(selectedRow, 1));
             Integer experiencia = (Integer) tableModel.getValueAt(selectedRow, 2);
             txtExperiencia.setText(experiencia.toString());
@@ -118,7 +120,7 @@ public class Desarrollador {
         try (Session session = factory.openSession()) {
             session.beginTransaction();
             modelos.Desarrollador desarrollador;
-            if (selectedDevelopmentId == null) {
+            if (selectedDeveloperId == null) {
                 desarrollador = new modelos.Desarrollador();
                 desarrollador.setNombre(nombre);
                 desarrollador.setEspecialidad(especialidad);
@@ -129,7 +131,7 @@ public class Desarrollador {
                         desarrollador.getExperiencia(), desarrollador.getEspecialidad(),
                         desarrollador.getEquipo().getNombre(), desarrollador.getEquipo().getId()});
             } else {
-                desarrollador = session.get(modelos.Desarrollador.class, selectedDevelopmentId);
+                desarrollador = session.get(modelos.Desarrollador.class, selectedDeveloperId);
                 desarrollador.setNombre(nombre);
                 desarrollador.setEspecialidad(especialidad);
                 desarrollador.setExperiencia(experiencia);
@@ -141,7 +143,7 @@ public class Desarrollador {
                 tableModel.setValueAt(experiencia, selectedRow, 3);
                 tableModel.setValueAt(equipo.getNombre(), selectedRow, 4);
                 tableModel.setValueAt(equipo.getId(), selectedRow, 5);
-                selectedDevelopmentId = null;
+                selectedDeveloperId = null;
             }
             session.getTransaction().commit();
             limpiarCampos();
@@ -162,7 +164,7 @@ public class Desarrollador {
 
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            modelos.Desarrollador desarrollador = session.get(modelos.Desarrollador.class, selectedDevelopmentId);
+            modelos.Desarrollador desarrollador = session.get(modelos.Desarrollador.class, selectedDeveloperId);
             if (desarrollador != null) {
                 session.remove(desarrollador);
                 session.getTransaction().commit();
@@ -176,8 +178,8 @@ public class Desarrollador {
         txtNombre.setText("");
         txtEspecialidad.setText("");
         txtExperiencia.setText("");
-        cbEquipo.setSelectedIndex(0);
-        selectedDevelopmentId = null;
+        cbEquipo.setSelectedIndex(-1);
+        selectedDeveloperId = null;
 
         tablaDesarrollador.clearSelection();
     }

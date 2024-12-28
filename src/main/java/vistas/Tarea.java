@@ -17,6 +17,7 @@ public class Tarea {
     private JButton btnCancelar;
     private JButton btnEliminar;
     private JTable tablaTarea;
+
     private final DefaultTableModel tableModel;
     private Integer selectedTareaId;
     private final SessionFactory factory;

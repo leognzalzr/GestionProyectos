@@ -11,7 +11,8 @@ import java.util.List;
 public class EquipoReport {
     private JPanel panelReporteEquipo;
     private JTable tablaReporteEquipo;
-    private DefaultTableModel tableModel;
+
+    private final DefaultTableModel tableModel;
     private final SessionFactory factory;
 
     public EquipoReport(SessionFactory factory) {

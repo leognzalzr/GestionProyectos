@@ -11,7 +11,8 @@ import java.util.List;
 public class DesarrolladorReport {
     private JPanel panelReporteDesarrollador;
     private JTable tablaReportDesarrollador;
-    private DefaultTableModel tableModel;
+
+    private final DefaultTableModel tableModel;
     private final SessionFactory factory;
 
     public DesarrolladorReport(SessionFactory factory) {
