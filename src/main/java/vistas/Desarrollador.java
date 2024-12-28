@@ -9,17 +9,18 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Objects;
 
 public class Desarrollador {
     private JPanel PanelDesarrollador;
     private JTextField txtNombre;
     private JTextField txtExperiencia;
-    private JTextField txtEspecialidad;
     private JComboBox<ItemsComboBox> cbEquipo;
     private JTable tablaDesarrollador;
     private JButton btnCancelar;
     private JButton btnGuardar;
     private JButton btnEliminar;
+    private JComboBox cmbEspecialidad;
 
     private final DefaultTableModel tableModel;
     private Integer selectedDeveloperId;
@@ -78,9 +79,8 @@ public class Desarrollador {
         if (selectedRow != -1) {
             selectedDeveloperId = (Integer) tableModel.getValueAt(selectedRow, 0);
             txtNombre.setText((String) tableModel.getValueAt(selectedRow, 1));
-            Integer experiencia = (Integer) tableModel.getValueAt(selectedRow, 2);
-            txtExperiencia.setText(experiencia.toString());
-            txtEspecialidad.setText((String) tableModel.getValueAt(selectedRow, 3));
+            txtExperiencia.setText(tableModel.getValueAt(selectedRow, 2).toString());
+            cmbEspecialidad.setSelectedItem(tableModel.getValueAt(selectedRow, 3));
             int equipoId = (int) tableModel.getValueAt(selectedRow, 5);
             for (int i = 0; i < cbEquipo.getItemCount(); i++) {
                 if (cbEquipo.getItemAt(i).getId() == equipoId) {
@@ -92,8 +92,16 @@ public class Desarrollador {
     }
 
     private void guardarDesarrollador() {
+        if (txtNombre.getText().isEmpty() ||
+                txtExperiencia.getText().isEmpty() ||
+                cmbEspecialidad.getSelectedItem() == null ||
+                cbEquipo.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, completá todos los campos.");
+            return;
+        }
+
         String nombre = txtNombre.getText();
-        String especialidad = txtEspecialidad.getText();
+        String especialidad = Objects.requireNonNull(cmbEspecialidad.getSelectedItem()).toString();
         int experiencia;
         try {
             experiencia = Integer.parseInt(txtExperiencia.getText());
@@ -104,17 +112,13 @@ public class Desarrollador {
             JOptionPane.showMessageDialog(null, "Por favor, ingresá una cantidad de años de experiencia válida.");
             return;
         }
+
         int equipoId = cbEquipo.getItemAt(cbEquipo.getSelectedIndex()).getId();
         Equipo equipo = null;
         if (equipoId != 0) {
             try (Session session = factory.openSession()) {
                 equipo = session.get(Equipo.class, equipoId);
             }
-        }
-
-        if (nombre.isEmpty() || especialidad.isEmpty() || equipo == null) {
-            JOptionPane.showMessageDialog(null, "Por favor, completá todos los campos.");
-            return;
         }
 
         try (Session session = factory.openSession()) {
@@ -176,7 +180,7 @@ public class Desarrollador {
 
     private void limpiarCampos() {
         txtNombre.setText("");
-        txtEspecialidad.setText("");
+        cmbEspecialidad.setSelectedIndex(-1);
         txtExperiencia.setText("");
         cbEquipo.setSelectedIndex(-1);
         selectedDeveloperId = null;

@@ -7,12 +7,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
-import java.util.Objects;
 
 public class Tarea {
     private JPanel PanelTarea;
     private JTextField txtDescripcion;
-    private JComboBox txtEstado;
+    private JComboBox cmbEstado;
     private JComboBox<ItemsComboBox> cmbDesarrollador;
     private JButton btnGuardar;
     private JButton btnCancelar;
@@ -42,9 +41,9 @@ public class Tarea {
             }
         });
 
-        btnGuardar.addActionListener(e -> guardarTarea());
-        btnCancelar.addActionListener(e -> limpiarCampos());
-        btnEliminar.addActionListener(e -> eliminarTarea());
+        btnGuardar.addActionListener(_ -> guardarTarea());
+        btnCancelar.addActionListener(_ -> limpiarCampos());
+        btnEliminar.addActionListener(_ -> eliminarTarea());
     }
 
     private void cargarDesarrolladores() {
@@ -78,27 +77,26 @@ public class Tarea {
         private void seleccionarTarea () {
             int selectedRow = tablaTarea.getSelectedRow();
             if (selectedRow != -1) {
-                try {
                     selectedTareaId = (Integer) tableModel.getValueAt(selectedRow, 0);
                     txtDescripcion.setText((String) tableModel.getValueAt(selectedRow, 1));
-                    txtEstado.setSelectedItem(tableModel.getValueAt(selectedRow, 2));
-
-                    try (Session session = factory.openSession()) {
-                        modelos.Tarea tarea = session.get(modelos.Tarea.class, selectedTareaId);
-                        cmbDesarrollador.setSelectedItem(tarea.getDesarrollador());
+                    cmbEstado.setSelectedItem(tableModel.getValueAt(selectedRow, 2));
+                    int desarrolladorId = Integer.parseInt(tableModel.getValueAt(selectedRow, 3).toString());
+                    for (int i = 0; i < cmbDesarrollador.getItemCount(); i++) {
+                        if (cmbDesarrollador.getItemAt(i).getId() == desarrolladorId) {
+                            cmbDesarrollador.setSelectedIndex(i);
+                            break;
+                        }
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error al seleccionar tarea: " + e.getMessage());
-                }
             }
         }
 
     private void guardarTarea() {
-        String estado = Objects.requireNonNull(txtEstado.getSelectedItem()).toString();
-        if (txtDescripcion.getText().isEmpty() || estado.isEmpty() || cmbDesarrollador.getSelectedItem() == null) {
+        if (txtDescripcion.getText().isEmpty() || cmbEstado.getSelectedItem() == null || cmbDesarrollador.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
             return;
         }
+
+        String estado = cmbEstado.getSelectedItem().toString();
 
         try (Session session = factory.openSession()) {
             session.beginTransaction();
@@ -156,7 +154,7 @@ public class Tarea {
 
         private void limpiarCampos () {
             txtDescripcion.setText("");
-            txtEstado.setSelectedIndex(0);
+            cmbEstado.setSelectedIndex(-1);
             cmbDesarrollador.setSelectedIndex(-1);
             selectedTareaId = null;
             tablaTarea.clearSelection();
@@ -165,6 +163,4 @@ public class Tarea {
         public JPanel getPanel () {
             return PanelTarea;
         }
-    }
-
-
+}

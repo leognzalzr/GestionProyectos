@@ -111,8 +111,8 @@ public class Proyecto {
                 datePicker.setSelectedDate(sqlDate.toLocalDate());
             }
 
-            int equipoId = (int) tableModel.getValueAt(selectedRow, 4);
-            int clienteId = (int) tableModel.getValueAt(selectedRow, 6);
+            int equipoId = Integer.parseInt(tableModel.getValueAt(selectedRow, 4).toString());
+            int clienteId = Integer.parseInt(tableModel.getValueAt(selectedRow, 6).toString());
             for (int i = 0; i < cbCliente.getItemCount(); i++) {
                 if (cbCliente.getItemAt(i).getId() == equipoId) {
                     cbCliente.setSelectedIndex(i);
