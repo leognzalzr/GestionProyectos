@@ -7,11 +7,12 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Objects;
 
 public class Tarea {
     private JPanel PanelTarea;
     private JTextField txtDescripcion;
-    private JTextField txtEstado;
+    private JComboBox txtEstado;
     private JComboBox<ItemsComboBox> cmbDesarrollador;
     private JButton btnGuardar;
     private JButton btnCancelar;
@@ -80,7 +81,7 @@ public class Tarea {
                 try {
                     selectedTareaId = (Integer) tableModel.getValueAt(selectedRow, 0);
                     txtDescripcion.setText((String) tableModel.getValueAt(selectedRow, 1));
-                    txtEstado.setText((String) tableModel.getValueAt(selectedRow, 2));
+                    txtEstado.setSelectedItem(tableModel.getValueAt(selectedRow, 2));
 
                     try (Session session = factory.openSession()) {
                         modelos.Tarea tarea = session.get(modelos.Tarea.class, selectedTareaId);
@@ -93,7 +94,8 @@ public class Tarea {
         }
 
     private void guardarTarea() {
-        if (txtDescripcion.getText().isEmpty() || txtEstado.getText().isEmpty() || cmbDesarrollador.getSelectedItem() == null) {
+        String estado = Objects.requireNonNull(txtEstado.getSelectedItem()).toString();
+        if (txtDescripcion.getText().isEmpty() || estado.isEmpty() || cmbDesarrollador.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
             return;
         }
@@ -105,11 +107,10 @@ public class Tarea {
 
             ItemsComboBox selectedItem = (ItemsComboBox) cmbDesarrollador.getSelectedItem();
             modelos.Desarrollador desarrollador = session.get(modelos.Desarrollador.class, selectedItem.getId());
-
             if (selectedTareaId == null) {
                 tarea = new modelos.Tarea(
                         txtDescripcion.getText(),
-                        txtEstado.getText(),
+                        estado,
                         desarrollador
                 );
                 session.persist(tarea);
@@ -117,7 +118,7 @@ public class Tarea {
                 tarea = session.get(modelos.Tarea.class, selectedTareaId);
                 if (tarea != null) {
                     tarea.setDescripcion(txtDescripcion.getText());
-                    tarea.setEstado(txtEstado.getText());
+                    tarea.setEstado(estado);
                     tarea.setDesarrollador(desarrollador);
                     session.merge(tarea);
                 }
@@ -155,7 +156,7 @@ public class Tarea {
 
         private void limpiarCampos () {
             txtDescripcion.setText("");
-            txtEstado.setText("");
+            txtEstado.setSelectedIndex(0);
             cmbDesarrollador.setSelectedIndex(-1);
             selectedTareaId = null;
             tablaTarea.clearSelection();
