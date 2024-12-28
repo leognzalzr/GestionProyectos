@@ -17,7 +17,7 @@ public class Main {
       .addAnnotatedClass(Tarea.class)
       .buildSessionFactory();
 
-      // Solo sirve para una mejor vista al ejecutar los paneles.
+
       FlatIntelliJLaf.setup();
       JFrame frame = new JFrame("Gestión de Proyectos");
       frame.setContentPane(new vistas.MenuPrincipal(factory).getPanel());
