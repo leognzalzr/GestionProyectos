@@ -17,6 +17,7 @@ public class Main {
       .addAnnotatedClass(Tarea.class)
       .buildSessionFactory();
 
+
       FlatIntelliJLaf.setup();
       JFrame frame = new JFrame("Gestión de Proyectos");
       frame.setContentPane(new vistas.MenuPrincipal(factory).getPanel());
