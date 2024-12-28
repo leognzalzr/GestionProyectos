@@ -40,6 +40,7 @@ public class Proyecto {
         cargarProyectos();
         cargarEquipos();
         cargarClientes();
+        limpiarCampos();
 
         tablaProyecto.addMouseListener(new MouseAdapter() {
             @Override
@@ -103,11 +104,9 @@ public class Proyecto {
             txtDescripcion.setText(descripcion);
 
             Object fecha = tableModel.getValueAt(selectedRow, 3);
-            if (fecha instanceof java.sql.Timestamp) {
-                java.sql.Timestamp timestamp = (java.sql.Timestamp) fecha;
+            if (fecha instanceof java.sql.Timestamp timestamp) {
                 datePicker.setSelectedDate(timestamp.toLocalDateTime().toLocalDate());
-            } else if (fecha instanceof java.sql.Date) {
-                java.sql.Date sqlDate = (java.sql.Date) fecha;
+            } else if (fecha instanceof Date sqlDate) {
                 datePicker.setSelectedDate(sqlDate.toLocalDate());
             }
 
@@ -129,6 +128,15 @@ public class Proyecto {
     }
 
     private void guardarProyecto() {
+        if (txtNombre == null ||
+                txtDescripcion == null ||
+                cbEquipo.getSelectedItem() == null ||
+                cbCliente.getSelectedItem() == null ||
+                datePicker.getSelectedDate() == null) {
+            JOptionPane.showMessageDialog(null, "Por favor, completá todos los campos.");
+            return;
+        }
+
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
         Date fecha = Date.valueOf(datePicker.getSelectedDate());
@@ -146,11 +154,6 @@ public class Proyecto {
             try (Session session = factory.openSession()) {
                 cliente = session.get(modelos.Cliente.class, clienteId);
             }
-        }
-
-        if (nombre.isEmpty() || descripcion.isEmpty() || equipo == null || cliente == null) {
-            JOptionPane.showMessageDialog(null, "Por favor, completá todos los campos.");
-            return;
         }
 
         try (Session session = factory.openSession()) {

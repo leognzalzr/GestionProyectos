@@ -33,6 +33,7 @@ public class Tarea {
 
         cargarTareas();
         cargarDesarrolladores();
+        limpiarCampos();
 
         tablaTarea.addMouseListener(new MouseAdapter() {
             @Override

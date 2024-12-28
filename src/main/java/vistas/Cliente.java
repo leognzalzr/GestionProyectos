@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -44,9 +43,9 @@ public class Cliente {
             }
         });
 
-        btnGuardar.addActionListener(e -> guardarCliente());
-        btnCancelar.addActionListener(e -> limpiarCampos());
-        btnEliminar.addActionListener(e -> eliminarCliente());
+        btnGuardar.addActionListener(_ -> guardarCliente());
+        btnCancelar.addActionListener(_ -> limpiarCampos());
+        btnEliminar.addActionListener(_ -> eliminarCliente());
     }
 
     private void cargarClientes() {

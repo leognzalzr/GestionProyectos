@@ -34,6 +34,7 @@ public class Desarrollador {
         tablaDesarrollador.setModel(tableModel);
         cargarDesarrollador();
         cargarEquipos();
+        limpiarCampos();
 
         tablaDesarrollador.addMouseListener(new MouseAdapter() {
             @Override
@@ -112,7 +113,7 @@ public class Desarrollador {
             JOptionPane.showMessageDialog(null, "Por favor, ingresá una cantidad de años de experiencia válida.");
             return;
         }
-
+        
         int equipoId = cbEquipo.getItemAt(cbEquipo.getSelectedIndex()).getId();
         Equipo equipo = null;
         if (equipoId != 0) {
