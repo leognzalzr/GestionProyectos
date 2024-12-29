@@ -1,0 +1,29 @@
+Proyecto:
+- Nombre (String)
+- Descripción (String)
+- Fecha de Fin (Date)
+- Equipo (Foreign Key)
+- Cliente (Foreign Key)
+
+Persona:
+- Nombre (String)
+
+Desarrollador:
+- Experiencia (int)
+- Especialidad (String)
+- Persona (int)
+- Equipo (int)
+
+Equipo:
+- Nombre (String)
+
+Tarea:
+- Estado (String)
+- Descripción (String)
+- Desarrollador (Foreign Key)
+
+Cliente:
+- NombreInstitucion (String)
+- Direccion         (String)
+- Telefono          (String)
+

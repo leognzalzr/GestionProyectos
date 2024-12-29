@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.gestion.proyectos</groupId>
-    <artifactId>GestionProyectos</artifactId>
+    <groupId>gestion.proyectos</groupId>
+    <artifactId>gestionproyectos2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -15,32 +15,25 @@
     </properties>
 
     <dependencies>
-        <!-- Dependencia de Hibernate Core -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.6.3.Final</version>
         </dependency>
-
-        <!-- Dependencia de Hibernate Community Dialects (Opcional, para diferentes bases de datos) -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-community-dialects</artifactId>
             <version>6.6.3.Final</version>
         </dependency>
-
-        <!-- Dependencia de JPA -->
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-
-        <!-- Dependencia de MySQL Connector -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.dj-raven</groupId>
+            <artifactId>swing-datetime-picker</artifactId>
+            <version>1.4.1</version>
         </dependency>
     </dependencies>
 </project>
