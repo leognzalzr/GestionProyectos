@@ -10,7 +10,7 @@ Persona:
 
 Desarrollador:
 - Experiencia (int)
-- Especialidad (String) //Guardar solo en mayúsculas
+- Especialidad (String)
 - Persona (int)
 - Equipo (int)
 
@@ -18,7 +18,7 @@ Equipo:
 - Nombre (String)
 
 Tarea:
-- Estado (String) // Guardar solo en mayúsculas
+- Estado (String)
 - Descripción (String)
 - Desarrollador (Foreign Key)
 
