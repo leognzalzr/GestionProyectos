@@ -64,7 +64,7 @@ public class Equipo {
         String nombreEquipo = txtNombre.getText();
 
         if (nombreEquipo.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, completá todos los campos.");
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
             return;
         }
 
@@ -92,11 +92,11 @@ public class Equipo {
     private void eliminarEquipo() {
         int selectedRow = tablaEquipo.getSelectedRow();
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Por favor, seleccioná un equipo.");
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un equipo.");
             return;
         }
 
-        int dialogResult = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que querés eliminar este equipo?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        int dialogResult = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar este equipo?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
         if (dialogResult == JOptionPane.NO_OPTION) {
             return;
         }

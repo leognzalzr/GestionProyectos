@@ -97,7 +97,7 @@ public class Desarrollador {
                 txtExperiencia.getText().isEmpty() ||
                 cmbEspecialidad.getSelectedItem() == null ||
                 cbEquipo.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Por favor, completá todos los campos.");
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
             return;
         }
 
@@ -110,7 +110,7 @@ public class Desarrollador {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Por favor, ingresá una cantidad de años de experiencia válida.");
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese una cantidad de años de experiencia válida.");
             return;
         }
         
@@ -143,11 +143,11 @@ public class Desarrollador {
                 desarrollador.setEquipo(equipo);
                 session.merge(desarrollador);
                 int selectedRow = tablaDesarrollador.getSelectedRow();
-                tableModel.setValueAt(nombre, selectedRow, 1);
-                tableModel.setValueAt(especialidad, selectedRow, 2);
-                tableModel.setValueAt(experiencia, selectedRow, 3);
-                tableModel.setValueAt(equipo.getNombre(), selectedRow, 4);
-                tableModel.setValueAt(equipo.getId(), selectedRow, 5);
+                tableModel.setValueAt(desarrollador.getNombre(), selectedRow, 1);
+                tableModel.setValueAt(desarrollador.getEspecialidad(), selectedRow, 2);
+                tableModel.setValueAt(desarrollador.getExperiencia(), selectedRow, 3);
+                tableModel.setValueAt(desarrollador.getEquipo().getNombre(), selectedRow, 4);
+                tableModel.setValueAt(desarrollador.getEquipo().getId(), selectedRow, 5);
                 selectedDeveloperId = null;
             }
             session.getTransaction().commit();
@@ -158,11 +158,11 @@ public class Desarrollador {
     private void eliminarDesarrollador() {
         int selectedRow = tablaDesarrollador.getSelectedRow();
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Por favor, seleccioná un registro.");
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un registro.");
             return;
         }
 
-        int dialogResult = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que querés eliminar esta registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        int dialogResult = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar esta registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
         if (dialogResult == JOptionPane.NO_OPTION) {
             return;
         }
